@@ -49,7 +49,7 @@ loadJson('no-such-user.json')
         } else {
           // 알 수 없는 에러는 다시 던져집니다.
           throw err;
-        }
+        } 
       }      
     }
   
