@@ -62,3 +62,37 @@ getHen() //
 .then(cook)
 .then(console.log)
 .catch(console.log);
+
+
+// another ex
+function sleep(ms){
+  return new Promise(resolve=>setTimeout(resolve,ms))
+}
+
+const getDog = async()=>{
+  await sleep(1000);
+  return '멍멍이'
+}
+
+const getRabbit = async()=>{
+  await sleep(1000);
+  return '토끼'
+}
+
+const getTurtle = async()=>{
+  await sleep(1000);
+  return '거북이'
+}
+
+async function process(){
+  // 프로미스에 등록한 함수들이 여러개일때 다 끝나면 반환한다.
+  const result = await Promise.all(getDog(),getRabbit(),getTurtle)
+  console.log(result)  //['멍멍이','토끼','거북이]
+  
+  // 각각 들어감
+  const [dog, rabbit, turtle] = const result = await Promise.all(getDog(),getRabbit(),getTurtle)
+  // 가장 빨리 끝난게 결과물
+  const fast = const result = await Promise.rece(getDog(),getRabbit(),getTurtle) 
+}
+
+
