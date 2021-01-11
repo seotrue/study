@@ -1,4 +1,4 @@
-# works
+# study
 
 1. async / promise
 
