@@ -4,5 +4,5 @@
 3. reducer/react-thunk
 
 ## 참고 URL
-- https://studyingych.tistory.com/28 : javascript localstorage 저장/JSON.stringify(), JSON.parse()
+- javascript localstorage 저장/JSON.stringify(), JSON.parse()[https://studyingych.tistory.com/28 ]
 - 인피니트 스크롤(리액트)[https://y0c.github.io/2019/06/30/react-infinite-scroll/]
