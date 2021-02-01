@@ -3,13 +3,13 @@
 2. git 명령어
 3. reducer/react-thunk
 
-####svg
+#### svg
 - text 정렬 및 일반 css 는 안먹는다
 - fabic.js 라이브러리 캔버스를 svg로 변환/json으로 변환  
   1. textBox 사용 시 <g><text><tspan></tspan</text></g> 로 구조화 
-  2. tspan 제거 함수
-  ```
-  function deleteTspan(svg) {
+  2. tspan 제거 함수  
+  
+   ```function deleteTspan(svg) {
     let tspanTagMatch = svg.match(/<tspan.*>(.*)<\/tspan>/); 
     let tspanString = null;
     let text = null;
@@ -56,8 +56,9 @@
     }
 
     return transformedSvg;
-}
-  ```
+} ```  
+
+
   
 ## 참고 URL
 - javascript localstorage 저장/JSON.stringify(), JSON.parse()[https://studyingych.tistory.com/28 ]
