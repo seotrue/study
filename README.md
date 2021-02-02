@@ -58,9 +58,17 @@
     return transformedSvg;
 } ```  
 
+### let sum = a => async b => { return a + b; }의 형태 의미
+```
+let sum = function(a) {
+    return async function(b) {
+        return a + b;
+    };
+}
+```  
 
-  
 ## 참고 URL
 - javascript localstorage 저장/JSON.stringify(), JSON.parse()[https://studyingych.tistory.com/28 ]
 - 인피니트 스크롤(리액트)[https://y0c.github.io/2019/06/30/react-infinite-scroll/]
 - 정규식 [https://beomy.tistory.com/21]
+- 개발자 질문 [https://hashcode.co.kr/]
