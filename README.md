@@ -72,3 +72,7 @@ let sum = function(a) {
 - 인피니트 스크롤(리액트)[https://y0c.github.io/2019/06/30/react-infinite-scroll/]
 - 정규식 [https://beomy.tistory.com/21]
 - 개발자 질문 [https://hashcode.co.kr/]
+- vlpt 리덕스 [https://redux-advanced.vlpt.us/2/01.html]
+- 모던 자바스크립트 [https://ko.javascript.info/]
+- 웹팩[https://joshua1988.github.io/webpack-guide/guide.html]
+- 타입스크립트 [https://joshua1988.github.io/ts/intro.html]
