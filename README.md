@@ -76,3 +76,4 @@ let sum = function(a) {
 - 모던 자바스크립트 [https://ko.javascript.info/]
 - 웹팩[https://joshua1988.github.io/webpack-guide/guide.html]
 - 타입스크립트 [https://joshua1988.github.io/ts/intro.html]
+- ES6 축약 기법 [https://chanspark.github.io/2017/11/28/ES6-%EA%BF%80%ED%8C%81.html]
