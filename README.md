@@ -79,3 +79,4 @@ let sum = function(a) {
 - ES6 축약 기법 [https://chanspark.github.io/2017/11/28/ES6-%EA%BF%80%ED%8C%81.html]
 - 에러문법 [https://nodejs.org/api/errors.html#errors_common_system_errors]
 - git [https://mylko72.gitbooks.io/git/content/commit/remove.html]
+- [README.me 작성법](https://tinydew4.gitbooks.io/gitbook/content/ko/syntax/markdown.html#headings)
