@@ -74,14 +74,22 @@ let sum = function(a) {
 - 개발자 질문 [https://hashcode.co.kr/]
 - vlpt 리덕스 [https://redux-advanced.vlpt.us/2/01.html]
 - 모던 자바스크립트 [https://ko.javascript.info/]
-- 웹팩[https://joshua1988.github.io/webpack-guide/guide.html]
 - 타입스크립트 [https://joshua1988.github.io/ts/intro.html]
 - ES6 축약 기법 [https://chanspark.github.io/2017/11/28/ES6-%EA%BF%80%ED%8C%81.html]
 - 에러문법 [https://nodejs.org/api/errors.html#errors_common_system_errors]
 - git [https://mylko72.gitbooks.io/git/content/commit/remove.html]
 - [README.me 작성법](https://tinydew4.gitbooks.io/gitbook/content/ko/syntax/markdown.html#headings)
 - [웹프로그래밍 튜토리얼](https://poiemaweb.com/)
-- [](https://developer.mozilla.org/ko/docs/Web/Tutorials)
+- [MDN](https://developer.mozilla.org/ko/docs/Web/Tutorials)
 - [캡팁판교ES6](https://joshua1988.github.io/es6-online-book/template-literal.html#%EC%97%AC%EB%9F%AC-%EC%A4%84%EC%97%90-%EA%B1%B8%EC%B3%90-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%84%A0%EC%96%B8%ED%95%98%EA%B8%B0)
+
+### 웹팩
+- 웹팩[https://joshua1988.github.io/webpack-guide/guide.html]
+
+### 개발자 블로그
 - [김정환 블로그](https://jeonghwan-kim.github.io/series/2019/12/09/frontend-dev-env-npm.html)
 - [캡틴판교 블로그](https://joshua1988.github.io/)
+- [제로초](https://www.zerocho.com/)
+
+### 디자인패턴
+- https://delivan.dev/react/programming-patterns-with-react-hooks-kr/
