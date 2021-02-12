@@ -95,3 +95,4 @@ let sum = function(a) {
 
 ### 디자인패턴
 - https://delivan.dev/react/programming-patterns-with-react-hooks-kr/
+- https://snowfleur.tistory.com/129
