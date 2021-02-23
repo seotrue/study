@@ -29,7 +29,7 @@
 - 타입스크립트 [https://joshua1988.github.io/ts/intro.html]
 - [캡팁판교ES6](https://joshua1988.github.io/es6-online-book/template-literal.html#%EC%97%AC%EB%9F%AC-%EC%A4%84%EC%97%90-%EA%B1%B8%EC%B3%90-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%84%A0%EC%96%B8%ED%95%98%EA%B8%B0)
 - vlpt 리덕스 [https://redux-advanced.vlpt.us/2/01.html]
-
+- 자바스크립트 데이터 정리 [https://mylko72.gitbooks.io/javascript-cookbook/content/chapter1/chapter1_2.html]
 ### 웹팩
 - 웹팩[https://joshua1988.github.io/webpack-guide/guide.html]
 
