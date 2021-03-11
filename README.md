@@ -10,6 +10,9 @@
 4. 타입스트립트 => 강의 진행중
 5. 노드서버
 
+
+## 용어
+- ETag는 브라우저가 캐시된 파일을 이용할 것인지 아니면 서버로부터 다시 가져와야할지을 결정하게 하는 헤더입니다. 
 ## 참고 URL
 - javascript localstorage 저장/JSON.stringify(), JSON.parse()[https://studyingych.tistory.com/28 ]
 - 인피니트 스크롤(리액트)[https://y0c.github.io/2019/06/30/react-infinite-scroll/]
