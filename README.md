@@ -12,6 +12,9 @@
 
 
 ## 용어
+- 
+    React number format
+
 - ETag는 브라우저가 캐시된 파일을 이용할 것인지 아니면 서버로부터 다시 가져와야할지을 결정하게 하는 헤더입니다. 
 ## 참고 URL
 - javascript localstorage 저장/JSON.stringify(), JSON.parse()[https://studyingych.tistory.com/28 ]
