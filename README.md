@@ -24,6 +24,11 @@
 - git [https://mylko72.gitbooks.io/git/content/commit/remove.html]
 - [README.me 작성법](https://tinydew4.gitbooks.io/gitbook/content/ko/syntax/markdown.html#headings)
 - [프론트엔드 웹 가이드](https://medium.com/@mr.november11/react-%EB%B2%88%EC%97%AD-2020%EB%85%84-%EB%A6%AC%EC%95%A1%ED%8A%B8-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EB%A1%9C%EB%93%9C%EB%A7%B5-%EB%AA%A8%EB%8D%98-%ED%94%84%EB%9F%B0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%9B%B9-%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80-%EB%90%98%EA%B8%B0-%EC%9C%84%ED%95%9C-%EA%B0%80%EC%9D%B4%EB%93%9C-bedd9a0fed2f)
+- [배열 구조분해](https://livelikeabel.tistory.com/31)
+
+### 디버깅
+= [웹스톰 디버깅](https://www.jetbrains.com/help/webstorm/debugging-javascript-in-chrome.html#debugging_js_asynchronous_code)
+
 
 ### 에러관련 URL
 - 에러문법 [https://nodejs.org/api/errors.html#errors_common_system_errors]
@@ -36,6 +41,9 @@
 - [캡팁판교ES6](https://joshua1988.github.io/es6-online-book/template-literal.html#%EC%97%AC%EB%9F%AC-%EC%A4%84%EC%97%90-%EA%B1%B8%EC%B3%90-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%84%A0%EC%96%B8%ED%95%98%EA%B8%B0)
 - vlpt 리덕스 [https://redux-advanced.vlpt.us/2/01.html]
 - 자바스크립트 데이터 정리 [https://mylko72.gitbooks.io/javascript-cookbook/content/chapter1/chapter1_2.html]
+- - [리덕스 튜토리얼](https://ko.redux.js.org/recipes/structuring-reducers/immutable-update-patterns/)
+-
+
 ### 웹팩
 - 웹팩[https://joshua1988.github.io/webpack-guide/guide.html]
 
@@ -49,6 +57,7 @@
 - https://snowfleur.tistory.com/129
 - [비지니스로직](https://mommoo.tistory.com/67)
 - [리액트 훅으로 알아보는 디자인 패턴](https://delivan.dev/react/programming-patterns-with-react-hooks-kr/)
+- [컴포넌트 정리](https://www.slideshare.net/jisuyoun/ui-60262731)
 
 ### AWS
 - 알아볼것 :  AWS의 프론트엔드 환경 및 캐시 문제
