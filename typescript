@@ -1,0 +1,24 @@
+제네릭
+
+functio logText<T>(text: T):T {
+	console.log(text)
+	return text;
+}
+logText<string>('하이')
+
+파라미커의 타입을 넘길때 지정해서 넘기겟다
+호출하는 시점에 타입을 넘겨주느넛이 제네릭
+
+제네릭 장점:
+ 유니온의 경우 자동완성이 유니언으로 사용한 타입드의 교집합만 보이는데,
+
+
+제네릭 타입 제한
+// 
+
+
+keyof
+extends : 확장 할때 쓸때
+
+
+extends keyof  :: 상속 할 부분 중에 하나만 들어올수 잇다(상속하는 키값들만 들어올수 잇다
