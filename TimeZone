@@ -3,3 +3,8 @@ var local = gmtDateTime.local().format('YYYY-MMM-DD h:mm A');
 
 utc :  글로벌 시간
 local :  현지 시간
+
+GMT: Greenwich Mean Time의 약자로 영국 그리니치 천문대를 기준으로하는 평균 태양시를 의미합니다.
+UTC: Universal Time, Coordinated의 약자로 세슘 원자 진동수를 기준으로 만들어진 시간을 의미합니다.
+UTC+9: UTC의 기준시간에 9시간을 더한 시간, 즉 한국 표준시와 동일합니다.
+KTS: Korean Standard Time의 약자로 대한민국의 표준시입니
