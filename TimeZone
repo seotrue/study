@@ -1,0 +1,5 @@
+var gmtDateTime = moment.utc("2015-10-24 20:00", "YYYY-MM-DD HH")
+var local = gmtDateTime.local().format('YYYY-MMM-DD h:mm A');
+
+utc :  글로벌 시간
+local :  현지 시간
