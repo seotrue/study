@@ -123,3 +123,55 @@ export default About;
 ```
 
 출처 : <https://react.vlpt.us/react-router/02-params-and-query.html | velopert>
+
+
+### 뒤로가기 이벤트 제어
+
+```
+componentDidMount() {
+    this._isMounted = true;
+    window.onpopstate = ()=> {
+      if(this._isMounted) {
+        const { hash } = location;
+        if(hash.indexOf('home')>-1 && this.state.value!==0)
+          this.setState({value: 0})
+        if(hash.indexOf('users')>-1 && this.state.value!==1)
+          this.setState({value: 1})
+        if(hash.indexOf('data')>-1 && this.state.value!==2)
+          this.setState({value: 2})
+      }
+    }
+  }
+```
+
+```
+import { useHistory } from 'react-router-dom'
+
+
+const [ locationKeys, setLocationKeys ] = useState([])
+const history = useHistory()
+
+useEffect(() => {
+  return history.listen(location => {
+    if (history.action === 'PUSH') {
+      setLocationKeys([ location.key ])
+    }
+
+    if (history.action === 'POP') {
+      if (locationKeys[1] === location.key) {
+        setLocationKeys(([ _, ...keys ]) => keys)
+
+        // Handle forward event
+
+      } else {
+        setLocationKeys((keys) => [ location.key, ...keys ])
+
+        // Handle back event
+
+      }
+    }
+  })
+}, [ locationKeys, ])
+```
+
+출처 : <https://stackoverflow.com/questions/39342195/intercept-handle-browsers-back-button-in-react-router>
