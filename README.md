@@ -42,7 +42,9 @@
 - vlpt 리덕스 [https://redux-advanced.vlpt.us/2/01.html]
 - 자바스크립트 데이터 정리 [https://mylko72.gitbooks.io/javascript-cookbook/content/chapter1/chapter1_2.html]
 - - [리덕스 튜토리얼](https://ko.redux.js.org/recipes/structuring-reducers/immutable-update-patterns/)
--
+- [타입스크립트 모던버전] (https://yamoo9.gitbook.io/typescript/decorator/composition)
+- [데코레이터-타입스크립트](https://code-masterjung.tistory.com/25)
+- [데코레이터-자바스크립트](https://ui.toast.com/weekly-pick/ko_20200102)
 
 ### 웹팩
 - 웹팩[https://joshua1988.github.io/webpack-guide/guide.html]
