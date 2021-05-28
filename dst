@@ -1,0 +1,45 @@
+console.log('--------------------');
+let t5 = new Date(1611291614000);
+console.log('localtime: ', t5.toString());
+console.log('ISO String: ', t5.toISOString());
+console.log('UTC : ', t5.toUTCString());
+console.log('--------------------');
+let t6 = new Date('2021-01-22 14:14:00');
+console.log('localtime: ', t6.toString());
+console.log('ISO String: ', t6.toISOString());
+console.log('UTC : ', t6.toUTCString());
+console.log('--------------------');
+let t7 = new Date('2021-01-22T14:14:00Z');
+console.log('localtime: ', t7.toString());
+console.log('ISO String: ', t7.toISOString());
+console.log('UTC : ', t7.toUTCString());
+console.log('--------------------');
+let t8 = new Date('2021-01-22T14:14:00+0900');
+console.log('localtime: ', t8.toString());
+console.log('ISO String: ', t8.toISOString());
+console.log('UTC : ', t8.toUTCString());
+
+ 
+
+
+--------------------
+localtime:  Fri Jan 22 2021 14:00:14 GMT+0900 (Korean Standard Time)
+ISO String:  2021-01-22T05:00:14.000Z
+UTC :  Fri, 22 Jan 2021 05:00:14 GMT
+--------------------
+localtime:  Fri Jan 22 2021 14:14:00 GMT+0900 (Korean Standard Time)
+ISO String:  2021-01-22T05:14:00.000Z
+UTC :  Fri, 22 Jan 2021 05:14:00 GMT
+--------------------
+localtime:  Fri Jan 22 2021 23:14:00 GMT+0900 (Korean Standard Time)
+ISO String:  2021-01-22T14:14:00.000Z
+UTC :  Fri, 22 Jan 2021 14:14:00 GMT
+--------------------
+localtime:  Fri Jan 22 2021 14:14:00 GMT+0900 (Korean Standard Time)
+ISO String:  2021-01-22T05:14:00.000Z
+UTC :  Fri, 22 Jan 2021 05:14:00 GMT
+ 
+
+ 
+
+https://stackoverflow.com/questions/58847869/utc-vs-iso-format-for-time
