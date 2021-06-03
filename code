@@ -1,0 +1,24 @@
+const onBlurTime = ({ target: { name } }) => {
+   const value = getValues(name);
+   if (!value && value !== 0) {
+      return setError(name, {
+         type: 'required',
+         message: Message.autoCountResetRequired.key
+      });
+   }
+   if (name === autoCountHour.name && (value > 23 || isNaN(value))) {
+      return setError(name, {
+         type: 'required',
+         message: Message.autoCountResetRange.key
+      });
+   }
+   
+   if (name === autoCountMinute.name && (value > 59 || isNaN(value))) {
+      return setError(name, {
+         type: 'required',
+         message: Message.autoCountResetRange.key
+      });
+   }
+   const changeValue = value < 10 ? `0${value.length > 1 ? value[1] : value}`.toString() : value.toString();
+   setValue(name, changeValue);
+}
