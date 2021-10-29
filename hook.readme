@@ -1,0 +1,43 @@
+hook
+
+useCallback
+두번째 인자 ->[], 빈배열에 적어둔 얘가 바뀌면 새로 실행된다.
+
+useCallback은 함수컴포넌트가 계속 재실행 되니깐
+불필요한 리렌더링을 막기 위해 사용한다.
+ 즉 한번만 실행된다 이안에 적은 소스는 단 두번째 인자에 적은 값이 
+바뀔때면 useCallback 또한 다시 실행된다.
+
+
+이 함수들은 컴포넌트가 리렌더링 될 때 마다 새로 만들어집니다. 
+함수를 선언하는 것 자체는 사실 메모리도, CPU 도 리소스를 많이 차지 하는 작업은 
+아니기 때문에 함수를 새로 선언한다고 해서 그 자체 만으로 큰 부하가 생길일은 없지만, 
+한번 만든 함수를 필요할때만 새로 만들고 재사용하는 것은 여전히 중요합니다.
+
+그 이유는, 우리가 나중에 컴포넌트에서 props 가
+ 바뀌지 않았으면 Virtual DOM 에 새로 렌더링하는 것 조차 하지 않고 
+컴포넌트의 결과물을 재사용 하는 최적화 작업을 할건데요, 
+이 작업을 하려면, 함수를 재사용하는것이 필수입니다.
+
+
+useCallbalck 함수 기준으로 외부 변수면 deps에 써주고 내부변수면 안써주고 useCallback : 성능 최적화
+
+
+
+ // useSelector는 리덕스 스토어의 상태를 조회하는 Hook입니다.
+  // state의 값은 store.getState() 함수를 호출했을 때 나타나는 결과물과 동일합니다.
+
+
+
+hook
+https://www.smashingmagazine.com/2020/04/react-hooks-best-practices/
+https://blog.logrocket.com/react-hooks-cheat-sheet-unlock-solutions-to-common-problems-af4caf699e70/
+
+3. REACT HOOKS 스니펫 사용  #
+React Hooks Snippets는 React Hooks를 더 쉽고 빠르게 만드는 Visual Studio Code 확장입니다. 현재 5개의 후크가 지원됩니다.
+
+useState()
+useEffect()
+useContext()
+useCallback()
+useMemo()
