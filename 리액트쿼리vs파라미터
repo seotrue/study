@@ -13,3 +13,11 @@ match 객체: 현재의 주소가 Route 컴포넌트에서 정한 규칙과 어�
 쿼리는 라우트 컴포넌트에게 props 전달되는 location 객체에 있는 search 값
 location 객체는 현재 앱이 갖고있는 주소에 대한 정보
 search 값(문자열) 객체 형태로 변환시 qs 라이브러리 사용
+
+
+[쿼리 사용시]
+그것은 qs라는 npm모듈을 이용한다.
+
+1
+npm i query-string --save
+
