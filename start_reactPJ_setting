@@ -1,0 +1,73 @@
+
+1. 프로젝트 시작
+- npx create-react-app ./wellcomhome_web_client
+
+2. 폴더구조
+- . 우리가 CRA를 배포했을 때 실제 서버에 배포되는 폴더가 public 폴더
+- src:  index.js을 포함, 리액트의 시작
+- App.js: 리액트 라우터를 설치하면 컴포넌트가 최상위 컴포넌트 APP.JS 에 자리 잡음
+- 각 디렉토리 구성요소
+components : 공통 컴포넌트 관리 
+page: 페이지 단위의 컴포넌트 폴더로 구성
+components  vs page
+여러 페이지에서 동시에 사용되는 컴포넌트의 경우 components 폴더에서 관리
+페이지 컴포넌트의 경우 pages 폴더에서 관리
+해당 페이지 내에서만 사용하는 컴포넌트의 경우 해당 페이지 폴더 하위에서 관리하는 것이 좋음!
+
+layouts:
+hoc로 
+
+styles:
+sass 사용시
+reset.scss => css 초기화
+common.scss => 공통으로 사용하는 css 속성 정의
+
+services:
+자바스크립트 모듈을 담는 폴더
+
+utils:
+상수나 공통 함수, 유틸리티를 담는 폴더.
+
+hooks
+함수형 컴포넌트를 사용하면서 커스텀 훅을 모듈화하여 담아놓는 폴더.
+https://velog.io/@_seeul/React-%EB%A6%AC%EC%95%A1%ED%8A%B8%EB%A1%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%A5%BC-%EC%A7%84%ED%96%89%ED%95%A0%EB%95%8C-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%8F%B4%EB%8D%94-%EA%B5%AC%EC%A1%B0%EB%A5%BC-%EC%9E%A1%EB%8A%94%EA%B2%83%EC%9D%B4-%EC%A2%8B%EC%9D%84%EA%B9%8C
+
+3. 다국어처리
+i18n  사용
+
+- npm install i18next react-i18next 설치
+
+4. 상태관리 셋팅
+[리덕스 설치]
+npm i redux react-redux
+$ npm i -D redux-devtools // 크롬브라우저 확장프로그램설치와 연동하기 위해 툴킷을 설치
+
+// 미들 웨어 
+썽크 사용
+ npm i -S redux-thunk // 취소 -> 리덕스 툴킷으로 사용 예정
+// @reduxjs/toolkit => 리덕스 툴킷은 내부적으로 불변성을 지키기 위해 immer라이브러리를 사용하고 비동기 통신을 위해 redux-thunk를 사용합니다
+npm i @reduxjs/toolkit react-redux
+
+5. 파이어베이스 셋팅
+
+6. 린트.
+- CRA(Create-React-App)에서는 eslint-config-airbnb 를 제외하고는 모두 설치해주니 1개만 설치해주면 된다.
+https://baeharam.netlify.app/posts/lint/Lint-ESLint-+-Prettier-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0참고
+
+
+
+
+리덕스 
+redux-promise-middleware
+
+https://choowiki.com/m/5 =>  툴킷사용
+
+패키지 설치
+npm install axios --save
+
+
+[Loadable Components]
+Code Spliting이란?
+싱글페이지 어플리케이션에서 번들 사이즈가 커지면 로딩속도나 성능면에서 문제가 생길 수 있다. 코드 스플리팅은 이것들을 여러개의 번들로 나누거나 동적으로 import 하는 기법을 말한다.
+Loadable Components 란?
+React가 자체적으로 제공하는 React.lazy나 React.suspense도 있지만 SSR까지 커버 가능하고 사용방법이 거의 동일한 Ladable Components를 페이스북에서도 추천하고 있다.
