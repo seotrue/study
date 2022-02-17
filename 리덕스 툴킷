@@ -1,0 +1,14 @@
+createSlice({
+  name: '액션의 경로를 잡아줄 이름',
+  initialState: [],
+  //액션으로 구분을 준 리듀서
+  reducers: {
+    //액션을 선언하고 해당 액션이 dispatch되면 state를 가지고 액션을 처리합니다.
+    action1 : (state, payload) {
+      //action1 logic
+    },
+     action2 : (state, payload) {
+      //action2 logic
+    },
+  }
+])
