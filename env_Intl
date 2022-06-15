@@ -1,0 +1,118 @@
+# .env
+- 웹팩을 통해 직접 구상한 리액트 프로젝트
+    1. ```.env``` 파일에  환경 변수를 선언할때 ```REACT_APP```으로 시작하지 않아두 됨
+    2. ```dotenv``` 패키지: DefingPlugin을 통해 수동으로 전역 변수 정의
+    3. ```dotenv-webpack```패키지: 플러그인에 ```new Dotenv()``` 추가
+    
+ - CRA를 통해 구출한 리액트 프로젝트
+    1. 변수명 ```REACT_APP_```으로 시작해야함: create-react-app에서는 보안이 필요한 환경변수의 유출을 미연에 방지하기 위해 REACTAPP으로 시작되지 않는 환경변수는 무시한다.
+    2. 별도의 설정없이 ```/src``` 디렉토리의 하위파일에서 ```process.env```로 환경 변수 접근
+
+### dotenv란
+- .env 파일에 선언한 변수를 process_env에 로드해주는 무의존성 모듈
+- DefinePlugin 사용 방법
+    1. 웹팩의 DefinePlugin을 사용해 ```process.env```라는 전역 변수를 정의
+- EnvironmentPlugin 사용
+- 대체 dotenv-webpack  사용
+
+# REACT 내에서 국제화 다국어 관리를 더 효과적으로 하는 방법
+- i18n: internationalization의 축약 가장 첫글자 i, 마지막n 사이에 알파벳이 18개 잇다구 해서 i18n
+- 국제적으로 통용되는 SW를 설계하고 개발하는 과정 
+
+### React Intl 
+```npm i react-intl```  
+```const locale = navigator.language; // 또는 `navigator.languages[0]````
+- 언어 별로 메세지 관리(json 파일에 저장해두고 불러옴)
+    ```
+  //lang/en-US.json
+  {
+    "title": "React Intl",
+    "info": "The current language is {locale}.",
+    "label": "Language",
+    "button": "Save"
+  }
+  
+  import enUsMsg from "./lang/en-US.json";
+  import koMsg from "./lang/ko.json";
+  import zhMsg from "./lang/zh.json";
+  ```
+- IntlProvider 컴포넌트
+    1. React Intl 라이브러리는 내부적으로 ```intl```이라는 객체를 이용해서 메세지 포페팅 
+    2. ```<IntlProvider />``` 컴포넌트로 애플리케이션의 최상의 컴포넌트를 감싸서 intl 객체가 모든 하위컴포넌트에서 접근 가능하도록 
+    ```
+    import { IntlProvider } from "react-intl";
+    import enUsMsg from "./lang/en-US.json";
+    import koMsg from "./lang/ko.json";
+    import zhMsg from "./lang/zh.json";
+    import Page from "./Page";
+    
+    const locale = localStorage.getItem("locale") ?? "ko";
+    const messages = { "en-US": enUsMsg, ko: koMsg, zh: zhMsg }[locale];
+    
+    function App() {
+      return (
+        <IntlProvider locale={locale} messages={messages}>
+          <Page />
+        </IntlProvider>
+      );
+    }
+    
+    export default App;
+   ```
+  3. ```<IntlProvider />``` 컴포넌트는 ```locale```과 ```messages```를 prop로 받음
+  
+ - FormattedMessage 컴포넌트
+    1.  <FormattedMessage/> 컴포넌트에 id prop으로 메세지 식별자를 넘기면, 위에서 <IntlProvider/> 컴포넌트의 message prop으로 넘겼던 객체로 부터 메세지를 찾습니다.
+
+```
+import { FormattedMessage } from "react-intl";
+import Form from "./Form";
+
+function Page() {
+  return (
+    <main>
+      <h1>
+        <FormattedMessage id="title" />
+      </h1>
+      <p>
+        <FormattedMessage
+          id="info"
+          defaultMessage="메세지를 찾을 수 없습니다. (locale: {locale})"
+          values={{ locale: localStorage.getItem("locale") }}
+        />
+      </p>
+      <Form />
+    </main>
+  );
+}
+
+export default Page;
+```
+
+- useIntl() & formatMessage()
+```
+import { FormattedMessage, useIntl } from "react-intl";
+function Form() {
+  const [locale, setLocale] = useState(localStorage.getItem("locale") ?? "ko");
+  const intl = useIntl();
+    return (
+        // 이런식으로 사용
+        <button
+                aria-label={intl.formatMessage({
+                  id: "button",
+                  defaultMessage: "Save"
+                })}
+              >
+   )
+}
+```
+
+- 정리  
+지금까지 React Intl 라이브러리를 이용해서 React 애플리케이션에서 다국어 지원을 하는 방법에 대해서 간단히 살펴보았습니다. 정리를 해보면 <IntlProvider/> 컴포넌트를 통해 애플리케이션 최상위에서 사용자의 언어/지역(locale) 코드와 메세지 데이터를 설정해주면, <FormattedMessage/> 컴포넌트 또는 intl.formatMessage() 함수를 통해서 해당 언어/지역에 부합하는 메세지를 화면에 보여줄 수 있습니다.
+
+### i18n
+```npm install react-i18next i18next — save```
+- [참고링크](https://jinminkim-50502.medium.com/react-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-i18n-%EB%8B%A4%EA%B5%AD%EC%96%B4-%EC%A7%80%EC%9B%90%ED%95%98%EA%B8%B0-a92bd5539e1d)
+
+## 너무 구찮다 일일히 csv에서 json 돌려서하기에 자동화는 없을까....
+ 
