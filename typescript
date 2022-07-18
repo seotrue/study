@@ -22,3 +22,23 @@ extends : 확장 할때 쓸때
 
 
 extends keyof  :: 상속 할 부분 중에 하나만 들어올수 잇다(상속하는 키값들만 들어올수 잇다
+
+
+as const 사용하기 
+```
+let ID = {
+ name: 'jojn'
+} as const
+
+function func(a: 'john) {
+	console.log('name')
+}
+
+func(ID.name)
+
+```
+as const를 사용하면, 객체 안에 담겨있는 각각의 속성들이 각자의 값으로 타입 지정되는 효과를 불러옵니다.
+
+위의 예시에서는 as const를 씀으로써, ID.name이 'John'으로 타입 지정되는 것이죠.
+
+또, as const라는 이름에서 유추할 수 있듯이, 객체형 자료 내부의 값들을 readonly로 바꿔줍니다.
