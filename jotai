@@ -1,0 +1,31 @@
+ex1)
+
+import { atom, useAtom } from "jotai";
+
+function resolveAfter2Seconds() {
+  console.log("START resolveAfter2Seconds (should be 1st)");
+  return new Promise((resolve) => {
+    setTimeout(function () {
+      resolve("slow");
+      console.log("END resolveAfter2Seconds (should be 2nd)");
+    }, 2000);
+  });
+}
+
+const fooAtom = atom(null, async (get, set) => {
+  await resolveAfter2Seconds();
+  console.log("END fooAtom write (should be 3rd)");
+});
+
+const barAtom = atom(null, async (get, set) => {
+  await set(fooAtom);
+  console.log("END barAtom write (should be 4th)");
+});
+
+const App = () => {
+  const [, triggerAtoms] = useAtom(barAtom);
+
+  return <button onClick={triggerAtoms}>Trigger writeable atoms</button>;
+};
+
+export default App;
