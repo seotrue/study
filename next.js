@@ -39,6 +39,7 @@ export async function getStaticProps() {
   const res = await axios.get(`https://localholst:3065/user`)
   const data = res.data
 
+  
   return { props: { data } }
 }
   ```
@@ -47,3 +48,18 @@ export async function getStaticProps() {
 내 페이지가 계속 업데이트 되지 않는페이지라면 ? 그때 이 getStaticProps 를 쓰는 것이 좋겠죠.
 
 다이나믹 라우팅을 사용하여 정적페이지를 만들경우에 getStaticProps 를 사용한다면 getStaticPaths와 함께 써주어야 합니다.
+
+
+ 3. next.js 내의 라우터
+ - Router.push와 Router.replace의 차이
+ - push: push를 사용하면 히스토리가 순서대로 쌓여서, 로그인 다음 페이지에서 뒤로가기 버튼을 누르면 로그인 페이지로 돌아가게 된다.
+ ex) 홈> 로그인> 리다이엑트 페이지> 뒤로가기> 로그인
+ - replace:replace를 사용하면 history 제일 위에 있는 원소를 지금 넣을 원소로 바꿔줘서, 뒤로가기 버튼을 누르면 로그인의 전 페이지로 돌아가게 된다.
+replace는 페이지를 이동한다기 보다는 현재 페이지를 바꿔주는 개념이라고 함
+ex) 홈> 로그인> 리다이렉트페이지> 뒤로가기> 홈
+
+고록 
+로그인을 완료 하고 나서 뒤로가기 버튼을 누르면 어떤 페이지로 이동해야 할까?
+로그인 상태는 유지하고 로그인 화면에 들어오기 전 화면으로 이동하는 것이 매끄러울 것이다.
+라우팅을 할 때 Router.replace 객체 함수를 사용하면 됨
+
