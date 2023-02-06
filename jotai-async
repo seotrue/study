@@ -49,3 +49,27 @@ export default App;
 https://zih0.tistory.com/27?category=890112
 
 */
+
+
+const baseReplyCommentListAtom = atomFamily(() => atom(null));
+
+const replyCommentListAtom = atomFamily((comment_id) => atom(async (get) => {
+  const overwritten = get(baseReplyCommentListAtom(commnet_id));
+  if (overwritten) return overwritten;
+  const result = await fakeFetchReplyCommentList(comment_id);
+  return result.data;
+}, (get, set, update) => {
+  set(baseReplyCommentListAtom(commnet_id), update)
+}));
+
+const postReplyComment  = atom(null, async (get, set, { comment_id, new_comment }) => {
+  let prev = get(baseReplyCommnetListAtom(comment_id));
+  if (!prev) {
+    prev = (await fakeFetchReplyCommentList(comment_id)).data;
+  }
+  const result = await fakeCreateReplyComment(comment_id, new_comment);
+  set(baseReplyCommentListAtom(comment_id), [
+    result.data,
+    ...prev),
+  ]);
+});
