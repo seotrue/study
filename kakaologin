@@ -1,0 +1,220 @@
+https://rick-ford.tistory.com/entry/Nextjs-Nice-API-%EB%B3%B8%EC%9D%B8%EC%9D%B8%EC%A6%9D-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
+
+https://velog.io/@ice-prince/Next.JS%EC%97%90%EC%84%9C-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0
+
+import type { AppProps } from 'next/app';
+import Layout from '../components/layouts/layout';
+import Script from 'next/script';
+
+declare global { // Kakao 함수를 전역에서 사용할 수 있도록 선언
+  interface Window {
+    Kakao: any;
+  }
+}
+function App({ Component, pageProps }: AppProps) {
+  
+  function kakaoInit() { // 페이지가 로드되면 실행
+    window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_JS_KEY);
+    console.log(window.Kakao.isInitialized());
+  }
+
+  return (
+    <Layout>
+      <Component {...pageProps} />
+      <Script
+        src='https://developers.kakao.com/sdk/js/kakao.js'
+        onLoad={kakaoInit} 
+      ></Script>
+    </Layout>
+  );
+}
+
+export default App;
+
+const Login = () => {
+  
+  // 등록한 redirectUri를 매개변수로 넣어준다.
+  function kakaoLogin() {
+    window.Kakao.Auth.authorize({
+      redirectUri: 'http://localhost:3000/kakao', 
+    });
+  }
+  
+  return (
+    <div className={styles.container}>
+      <KakaoBtn title='카카오 로그인' onClickBtn={kakaoLogin} />
+    </div>
+  );
+};
+
+export default Login;
+
+/ pages/kakao.tsx
+
+import { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect } from 'react';
+
+
+interface ResponseType {
+  ok: boolean;
+  error?: any;
+}
+
+const Kakao: NextPage = () => {
+  const router = useRouter();
+  const { code: authCode, error: kakaoServerError } = router.query;
+
+  const loginHandler = useCallback(
+    async (code: string | string[]) => {
+      
+      // 백엔드에 전송
+      const response: ResponseType = await fetch('/api/users/kakao-login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          authCode: code,
+        }),
+      }).then((res) => res.json());
+      
+      if (response.ok) { // 성공하면 홈으로 리다이렉트
+        router.push('/');
+      } else { // 실패하면 에러 페이지로 리다이렉트
+        router.push('/notifications/authentication-failed');
+      }
+    },
+    [router]
+  );
+
+  useEffect(() => {
+    if (authCode) {
+      loginHandler(authCode);
+      
+      // 인가코드를 제대로 못 받았을 경우에 에러 페이지를 띄운다.
+    } else if (kakaoServerError) { 
+      router.push('/notifications/authentication-failed');
+    }
+  }, [loginHandler, authCode, kakaoServerError, router]);
+
+  return (
+          <h2>로그인 중입니다..</h2>
+  );
+};
+
+// pages/api/users/kakao-login.ts
+
+import { NextApiRequest, NextApiResponse } from 'next';
+
+interface TokenResponse {
+  token_type: string;
+  access_token: string;
+  refresh_token: string;
+  id_token: string;
+  expires_in: number;
+  refresh_token_expires_in: string;
+  scope: string;
+}
+
+interface UserInfo {
+  id: number;
+  connected_at: string;
+  properties: {
+    nickname: string;
+    profile_image?: string; // 640x640
+    thumbnail_image?: string; // 110x110
+  };
+}
+
+async function getTokenFromKakao(authCode: string) {
+  const tokenUrl = `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${process.env.KAKAO_RESTAPI_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI}&code=${authCode}`;
+  const response: TokenResponse = await fetch(tokenUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  }).then((res) => res.json());
+  return response;
+}
+
+async function getUserFromKakao({ access_token }: TokenResponse) {
+  const userInfoUrl = 'https://kapi.kakao.com/v2/user/me';
+  const response: UserInfo = await fetch(userInfoUrl, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${access_token}`,
+    },
+  }).then((res) => res.json());
+  return response;
+}
+
+const handler = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
+  const { authCode } = req.body; // 인가 코드
+
+  // 토큰 받아오기
+  const tokenResponse = await getTokenFromKakao(authCode);
+  
+  // 유저 정보 받아오기
+  const userInfo = await getUserFromKakao(tokenResponse);
+  const {
+    id: kakaoId,
+    properties: { nickname, profile_image, thumbnail_image },
+  } = userInfo;
+  
+  / pages/api/users/kakao-login.ts
+// 함수 선언
+
+// 1. 세션만 업데이트하는 함수
+async function updateSession(kakaoId: number, newSessionId: string) {
+  const session = await client.session.update({
+    where: {
+      kakaoId,
+    },
+    data: {
+      sessionId: newSessionId,
+    },
+  });
+  return session;
+}
+
+// 2. 세션을 생성하고 유저와 연결하는 함수
+async function createSessionAndConnectToUser(
+  kakaoId: number,
+  newSessionId: string
+) {
+  const user = await client.user.update({
+    where: {
+      kakaoId,
+    },
+    data: {
+      session: {
+        create: { kakaoId, sessionId: newSessionId },
+      },
+    },
+  });
+  return user;
+}
+
+// 3. 새로운 유저를 생성하는 함수 (회원가입)
+async function createUser(
+  {
+    id: kakaoId,
+    properties: { nickname, profile_image, thumbnail_image },
+  }: UserInfo,
+  newSessionId: string
+) {
+  const user = await client.user.create({
+    data: {
+      name: nickname,
+      kakaoId,
+      loggedFrom: 'Kakao',
+      profileImage: profile_image || null,
+      session: {
+        create: { kakaoId, sessionId: newSessionId },
+      },
+    },
+  });
+  return user;
+}
