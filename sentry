@@ -1,0 +1,40 @@
+> npm install --save @sentry/react @sentry/tracing
+
+Sentry.init({
+    // 모든환경에 설정할 경우
+    dsn: "https://xxxxxxxxxxxxxxxxxxxxxxxxxxx@xxxxxx.ingest.sentry.io/xxxxx",
+    // production환경만 설정할 경우
+    dsn: process.env.NODE_ENV === "production"
+        ? "https://xxxxxxxxxxxxxxxxxxxxxxxxxxx@xxxxxx.ingest.sentry.io/xxxxx"
+        : false,
+    integrations: [new Integrations.BrowserTracing()],
+    environment: process.env.NODE_ENV,
+    tracesSampleRate: 1.0,
+});
+
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById("root")
+);
+
+<Sentry.ErrorBoundary
+  fallback={<p>에러가 발생하였습니다. 잠시 후 다시 시도해주세요.</p>}
+>
+  <Example />
+</Sentry.ErrorBoundary>;
+
+
+/*
+* sentry에 에러를 보내기 위한 설정
+* api 실행 중 에러가 발생하면 sentry에 에러를 보내도록 추가
+*/
+
+try {
+  aFunctionThatMightFail();
+} catch (err) {
+  Sentry.captureException(err);
+}
+
+- https://tech.kakaopay.com/post/frontend-sentry-monitoring/ 참
