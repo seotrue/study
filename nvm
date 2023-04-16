@@ -1,2 +1,6 @@
 https://inpa.tistory.com/entry/NODE-%F0%9F%93%9A-NVM-%EB%AA%A8%EB%93%88-%EC%82%AC%EC%9A%A9%EB%B2%95-%EB%85%B8%EB%93%9C-%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC
 참고 
+
+
+맥이나 리눅스도 nvm 패키지를 설치해 사용할 수 있다.
+다만 맥, 리눅스는 nvm을 사용하는 것보다 n (Interactively Manage Your Node.js Versions)를 사용하는데 더 최적화가 되어있다.
