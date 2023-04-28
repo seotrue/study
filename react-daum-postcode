@@ -1,0 +1,36 @@
+참고 https://blog.rhostem.com/posts/2020-05-10-nextjs-and-dynamic-import
+
+카카오에서 제공하는 Daum 우편번호 서비스 를 활용하기로 결정하고, 팀원분이 리액트에 최적화된 방식으로 사용할 수 있는 react-daum-postcode 라이브러리를 찾아 프로젝트에 적용해주셨습니다.
+```
+npm install react-daum-postcode
+# or
+yarn add react-daum-postcode
+
+# if react not installed, install react also.
+npm install react
+# or
+yarn add react
+```
+
+
+react-daum-postcode Embed
+
+import React from 'react';
+import DaumPostcodeEmbed from 'react-daum-postcode';
+const Postcode = () => {
+  const handleComplete = (data) => {
+    let fullAddress = data.address;
+    let extraAddress = '';
+    if (data.addressType === 'R') {
+      if (data.bname !== '') {
+        extraAddress += data.bname;
+      }
+      if (data.buildingName !== '') {
+        extraAddress += extraAddress !== '' ? `, ${data.buildingName}` : data.buildingName;
+      }
+      fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+    }
+    console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
+  };
+  return <DaumPostcodeEmbed onComplete={handleComplete} {...props} />;
+};
